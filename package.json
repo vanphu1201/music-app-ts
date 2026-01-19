@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "express": "^5.2.1",
+    "pug": "^3.0.3",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Topic from "../../modules/topic.module";
+import Topic from "../../models/topic.model";
 
 
 // [GET] /topics

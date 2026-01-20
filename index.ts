@@ -8,6 +8,8 @@ import ClientRoute from './routes/client/index.route';
 const app: Express = express();
 const port: number | string = process.env.PORT;
 
+app.use(express.static("public"));
+
 ClientRoute(app)
 
 database.connect();

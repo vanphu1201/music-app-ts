@@ -52,3 +52,24 @@ if (buttonLike) {
 
 }
 // End button Like
+
+// button favorite
+const buttonFavorite = document.querySelector(".inner-action.inner-heart");
+if (buttonFavorite) {
+    buttonFavorite.addEventListener("click", () => {
+        buttonFavorite.classList.toggle("favorite");
+        const isFavorite = buttonFavorite.classList.contains("favorite");
+        const typefavorite = isFavorite ? "favorite" : "disFavorite";
+        const songId = buttonLike.getAttribute("song-id");
+        const option = {
+            method: "PATCH"
+        }
+        fetch(`/songs/favorite/${typefavorite}/${songId}`, option)
+            .then(res => res.json())
+            .then(data => {
+            })
+
+    });
+
+}
+// End button favorite

@@ -217,3 +217,7 @@
 .inner-action.inner-like.like {
   color: blue;
 }
+
+.inner-action.inner-heart.favorite {
+  color: red;
+}

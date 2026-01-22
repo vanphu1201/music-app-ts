@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Topic from "../../models/topic.model";
 import Song from "../../models/song.model";
 import Singer from "../../models/singer.model";
+import favoriteSong from "../../models/favorite-song.model";
 
 
 // [GET] /songs/:slugTopic
@@ -93,5 +94,29 @@ export const like = async (req: Request, res: Response) => {
         code: 200,
         message: "Like thanh cong!",
         like: newLike
+    });
+}
+
+// [PATCH] /songs/favorite/:typeFavorite/:songid
+export const favorite = async (req: Request, res: Response) => {
+    const songId: string = req.params.songId.toString();
+    const typeFavorite: string = req.params.typeFavorite.toString();
+
+    console.log(typeFavorite)
+
+    if (typeFavorite == "disFavorite") {
+        await favoriteSong.deleteOne({songId: songId});
+    } else {
+        const newFavoriteSong = new favoriteSong({
+            songId: songId,
+            // userId = userId
+        });
+        await newFavoriteSong.save();
+    }
+
+    res.json({
+        code: 200,
+        message: "Thanh cong!",
+        typeFavorite: typeFavorite
     });
 }

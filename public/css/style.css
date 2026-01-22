@@ -133,6 +133,7 @@
   align-items: center;
   font-size: 14px;
   color: #666;
+  cursor: pointer;
 }
 
 .singer-detail .inner-action i {
@@ -211,4 +212,8 @@
   color: #444;
   line-height: 1.6;
   white-space: pre-line; /* Giữ định dạng xuống dòng của lời bài hát */
+}
+
+.inner-action.inner-like.like {
+  color: blue;
 }

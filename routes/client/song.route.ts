@@ -7,6 +7,8 @@ import * as controller from '../../controllers/client/song.controller';
 route.get("/:slugTopic", controller.list);
 
 route.get("/detail/:slugSong", controller.detail);
+route.patch("/like/:typeLike/:songId", controller.like);
+
 
 
 export const songRoute: Router = route;

@@ -1,3 +1,4 @@
+// APlayer
 const audio = document.querySelector("#aplayer");
 let singer = audio.getAttribute("data-singer");
 singer = JSON.parse(singer).fullName;
@@ -28,3 +29,39 @@ if (avatar) {
         avatar.classList.remove("playing")
     })
 }
+// End APlayer
+
+// button Like
+const buttonLike = document.querySelector(".inner-action.inner-like");
+if (buttonLike) {
+    buttonLike.addEventListener("click", () => {
+        buttonLike.classList.toggle("like");
+        const isLike = document.querySelector(".inner-action.inner-like.like");
+        if (isLike) {
+            
+            const songId = buttonLike.getAttribute("song-id");
+            const option = {
+                method: "PATCH"
+            }
+            fetch(`/songs/like/like/${songId}`, option)
+                .then(res => res.json())
+                .then(data => {
+                    buttonLike.querySelector("span").innerHTML = `<b>${data.like}</b>`;
+                })
+        } else {
+            
+            const songId = buttonLike.getAttribute("song-id");
+            const option = {
+                method: "PATCH"
+            }
+            fetch(`/songs/like/dislike/${songId}`, option)
+                .then(res => res.json())
+                .then(data => {
+                    buttonLike.querySelector("span").innerHTML = `${data.like}`;
+                })
+        }
+
+    });
+
+}
+// End button Like

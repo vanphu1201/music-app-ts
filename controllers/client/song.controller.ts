@@ -69,3 +69,55 @@ export const detail = async (req: Request, res: Response) => {
         res.redirect("/");
     }
 }
+
+// [PATCH] /songs/like/:typeLike/:songid
+export const like = async (req: Request, res: Response) => {
+    const songId: string = req.params.songId.toString();
+    const typeLike: string = req.params.typeLike.toString();
+    const song = await Song.findOne({
+        deleted: false,
+        status: "active",
+        _id: songId
+    })
+
+    console.log(song)
+
+    switch (typeLike) {
+        case "like":
+            const newLike = song.like + 1;
+            await Song.updateOne(
+                {
+                    deleted: false,
+                    status: "active",
+                    _id: songId
+                }, {
+                    like: newLike
+                });
+
+            res.json({
+                code: 200,
+                message: "Like thanh cong!",
+                like: newLike
+            });
+            break;
+
+        case "dislike":
+            const DisLike = song.like - 1;
+            await Song.updateOne(
+                {
+                    deleted: false,
+                    status: "active",
+                    _id: songId
+                }, {
+                    like: DisLike
+                })
+            res.json({
+                code: 200,
+                message: "Dislike thanh cong!",
+                like: DisLike
+            })
+            break;
+        default:
+            break;
+    }
+}

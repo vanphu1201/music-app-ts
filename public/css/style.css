@@ -112,3 +112,103 @@
   display: -webkit-box;
   margin-bottom: 5px;
 }
+/* Container chính cho chi tiết bài hát */
+.singer-detail .inner-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f39c12; /* Màu cam chủ đạo */
+  margin-bottom: 15px;
+}
+
+/* Khu vực các icon hành động (Thời gian, Ca sĩ, Like...) */
+.singer-detail .inner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.singer-detail .inner-action {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.singer-detail .inner-action i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+
+/* Khu vực trình phát nhạc và ảnh đại diện */
+.singer-detail .inner-play {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* Cập nhật khu vực Avatar để có thể xoay */
+.singer-detail .inner-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* Cắt ảnh thành hình tròn */
+  overflow: hidden;
+  border: 3px solid #f39c12; /* Viền cam quanh ảnh */
+  
+  /* Cấu hình hiệu ứng xoay */
+  animation: spin 12s linear infinite; /* Xoay liên tục trong 12 giây mỗi vòng */
+  animation-play-state: paused; /* Mặc định là tạm dừng cho đến khi phát nhạc */
+}
+
+/* Class này sẽ được thêm bằng JavaScript khi nhạc đang phát */
+.singer-detail .inner-avatar.playing {
+  animation-play-state: running; /* Kích hoạt trạng thái xoay */
+}
+
+/* Định nghĩa chuyển động xoay */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.singer-detail .inner-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.singer-detail .inner-audio {
+  flex: 1;
+}
+
+.singer-detail .inner-audio audio {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Các khối Mô tả và Lời bài hát */
+.singer-detail .inner-desc {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.singer-detail .inner-label {
+  padding: 10px 15px;
+  color: #f39c12;
+  font-weight: 700;
+  font-size: 18px;
+  border-bottom: 1px solid #ddd;
+  background-color: #ffffff;
+}
+
+.singer-detail .inner-text {
+  padding: 15px;
+  background: #ffffff;
+  color: #444;
+  line-height: 1.6;
+  white-space: pre-line; /* Giữ định dạng xuống dòng của lời bài hát */
+}
